@@ -26,7 +26,7 @@ usernameInput.addEventListener("blur", (e) => {
 
 emailInput.addEventListener("blur", (e) => {
   if (emailInput.validity.valueMissing) {
-    emailInput.setCustomValidity("Please ente and email address.");
+    emailInput.setCustomValidity("Please enter and email address.");
   } else if (emailInput.validity.typeMismatch) {
     emailInput.setCustomValidity(
       "Enter a valid email format. Example: bob@bob.com"
@@ -45,5 +45,36 @@ emailInput.addEventListener("blur", (e) => {
 passwordInput.addEventListener("blur", (e) => {
   if (passwordInput.validity.valueMissing) {
     passwordInput.setCustomValidity("Please enter a password.");
+  }
+  else if (passwordInput.validity.tooShort) {
+    passwordInput.setCustomValidity("Please enter at least 8 charecters.");
+  }
+  else if (passwordInput.validity.patternMismatch) {
+    passwordInput.setCustomValidity("Must contain a number, a lowercase, and an uppercase character.")
+  }
+
+  if(!passwordInput.validity.valid) {
+    passwordError.textContent = passwordInput.validationMessage;
+  }
+  else {
+    passwordError.textContent = "";
+  }
+});
+
+confirmPasswordInput.addEventListener("blur",(e) => {
+  let password1 = passwordInput.value;
+  let password2 = confirmPasswordInput.value;
+  if(password1!=password2) {
+    confirmPasswordInput.setCustomValidity("Must match the passowrd field.")
+  }
+  else if (confirmPasswordInput.validity.valueMissing) {
+    confirmPasswordInput.setCustomValidity("Please enter a password.");
+  }
+
+  if(!confirmPasswordInput.validity.valid) {
+    confirmPasswordError.textContent = confirmPasswordInput.validationMessage;
+  }
+  else {
+    confirmPasswordError.textContent = "";
   }
 });
