@@ -1,6 +1,6 @@
 # Summary
 
-Interactive registration form utilizing javascript custom validation messages.
+Interactive registration form utilizing JavaScript custom validation messages.
 
 ## Reflections
 
